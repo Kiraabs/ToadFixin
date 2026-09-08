@@ -1,22 +1,23 @@
 ﻿@echo off
 cd /d "%~dp0"
 
-echo Closing ToadFixin...
+echo Terminating ToadFixin...
 taskkill /F /IM ToadFixin.exe
 
 timeout /t 1 /nobreak >nul
 
 echo.
-echo Updating ToadFixin...
+echo Updating...
 git pull --ff-only
 
 if errorlevel 1 (
     echo.
-    echo Update failed!
+    echo Updating error!
     pause
     exit /b 1
 )
 
 echo.
-echo Update completed successfully.
+echo Updating done.
+pause
 start "" "%~dp0ToadFixin.exe"
